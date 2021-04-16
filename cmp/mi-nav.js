@@ -32,28 +32,28 @@ import {
     async cambiaUsuario(usu) {
       if (usu && usu.email) {
         let html = "";
-        const roles =
-          await cargaRoles(
-            usu.email);
-            if (roles.has("Cliente")) {
-              html += /* html */
-                `<li>
-                  <a href=
-                    "chat.html">Chat</a>
-                </li>`;
-            }
-            if (roles.has(
-              "Administrador")) {
-              html += /* html */
-                `<li>
-                  <a href=
-      "alumnos.html">Alumnos</a>
-                </li>`;
-            }
-            this.ul.innerHTML += html;
-          }
-        }
+      const roles =
+        await cargaRoles(
+          usu.email);
+     if (roles.has("Cliente")) {
+        html += /* html */
+          `<li>
+            <a href=
+              "chat.html">Chat</a>
+          </li>`;
       }
-      
-      customElements.define(
-        "mi-nav", MiNav);
+      if (roles.has(
+        "Administrador")) {
+        html += /* html */
+          `<li>
+            <a href=
+"alumnos.html">Alumnos</a>
+          </li>`;
+      }
+      this.ul.innerHTML += html;
+    }
+  }
+}
+
+customElements.define(
+  "mi-nav", MiNav);
